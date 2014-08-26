@@ -1,8 +1,8 @@
 <?php
 	$time = microtime(true); // Gets microseconds
 	
-	DEFINE("CLASSNAME", "Web - 210 - YD1", 1); //Put your class - course number - section
-	DEFINE("STUDENT", "Student: Rick Anderson", 1); //Just change "Student Name" to your name
+	DEFINE("CLASSNAME", "Web - 250 - YD1", 1); //Put your class - course number - section
+	DEFINE("STUDENT", "Student: Josh Forbes", 1); //Just change "Student Name" to your name
 	
 	//You may edit these if you wish
 	//Please keep in mind that if there is anything in either of these it will not show it on the output
