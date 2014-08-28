@@ -1,0 +1,55 @@
+.container {
+    color: darkslategray;
+    margin-top: 2em;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4em;
+}
+
+.header h1 {
+    margin-bottom: .1em;
+
+}
+
+.header h3 {
+    margin-top: 0;
+    color: gray;
+}
+
+.header hr {
+    width: 20%;
+    margin: 0 auto 2em;
+}
+
+.alert {
+    margin: 1em auto 1.5em;
+    width: 35%;
+}
+
+.guess-container {
+    text-align: center;
+}
+
+.victory-container {
+    text-align: center;
+}
+
+.victory-container .glyphicon {
+    color: darkslateblue;
+}
+
+.victory-container .highlight {
+    font-weight: 600;
+    color: darkslateblue;
+}
+
+.victory-container .btn {
+    width: 100px;
+    margin: 0 .3em;
+}
+
+.quit-container {
+    text-align: center;
+}
