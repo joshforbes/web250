@@ -1,7 +1,6 @@
 
-
 <div class="guess-container">
-<form action="guess.php" method="post">
+<form action="guess.php" method="get">
     <select name="currentGuess">
         <?php foreach ($this->gameModel->getAnswerChoices() as $choices): ?>
             <option value="<?= $choices; ?>"><?= $choices; ?></option>

@@ -9,13 +9,61 @@ class GuessingGameController {
     }
 
     /**
-     * initialize a new game
+     * generates a new correct answer and clears stored guesses
+     * renders the game template
      */
-    private function init() {
-        if (!$this->gameState->getAnswer()) {
-            $answer = $this->gameModel->generateAnswer();
-            $this->gameState->setAnswer($answer);
+    public function startNewGame()
+    {
+        $answer = $this->gameModel->generateAnswer();
+        $this->gameState->setAnswer($answer);
+        $this->gameState->setGuesses([]);
+
+        $this->renderGame('game.php');
+    }
+
+    /**
+     * destroys session to quit game
+     */
+    public function quitGame()
+    {
+        $this->gameState->destroyState();
+        $this->renderGame('quit.php');
+    }
+
+    /**
+     * the user makes a guess
+     */
+    public function makeGuess()
+    {
+        $this->gameState->addGuess($this->gameState->getCurrentGuess());
+
+        if ($this->isCorrectGuess()) {
+            $this->renderGame('victory.php');
+        } else {
+            $this->createHint();
+            $this->renderGame('game.php');
         }
+    }
+
+    /**
+     * creates a hint based on current guess
+     */
+    public function createHint()
+    {
+        if ($this->gameState->getCurrentGuess() > $this->gameState->getAnswer()) {
+            $this->gameModel->setHint('high');
+        } else {
+            $this->gameModel->setHint('low');
+        }
+    }
+
+    /**
+     * @return bool
+     *  determines whether current guess is correct
+     */
+    public function isCorrectGuess()
+    {
+        return ($this->gameState->getCurrentGuess() == $this->gameState->getAnswer());
     }
 
     /**
@@ -30,47 +78,19 @@ class GuessingGameController {
         require($mainTemplatePath);
     }
 
-    /**
-     * @param $guess
-     * @param $answer
-     * @return bool
-     * compares the supplied guess to the correct answer
-     */
-    private function evaluateGuess($guess, $answer)
-    {
-        if ($guess == $answer) {
-            return true;
-        } elseif ($guess > $answer){
-            $this->gameModel->setHint('high');
-            return false;
-        } else {
-            $this->gameModel->setHint('low');
-            return false;
-        }
-    }
 
-    /**
-     * acts as a router for the game
-     */
     public function run()
     {
-        if (isset($_GET['newGame'])) {
-            $this->gameState->destroyState();
-        }
-
         if (isset($_GET['quitGame'])) {
-            $this->gameState->destroyState();
-            return $this->renderGame('quit.php');
+            return $this->quitGame();
         }
 
-        $this->init();
-
-        if ($this->evaluateGuess($this->gameState->getCurrentGuess(), $this->gameState->getAnswer())) {
-            $this->renderGame('victory.php');
-        } else {
-            $this->gameState->addGuess($this->gameState->getCurrentGuess());
-            $this->renderGame('game.php');
+        if (isset($_GET['currentGuess'])) {
+            return $this->makeGuess();
         }
+
+        return $this->startNewGame();
 
     }
+
 }

@@ -29,8 +29,8 @@ class GuessingGameState {
             session_start();
         }
 
-        $this->currentGuess = isset($_POST['currentGuess'])
-            ? $_POST['currentGuess']
+        $this->currentGuess = isset($_GET['currentGuess'])
+            ? $_GET['currentGuess']
             : null;
 
         $this->guesses = isset($_SESSION['guesses'])
@@ -79,7 +79,7 @@ class GuessingGameState {
 
     public function addGuess($guess)
     {
-        array_push($this->guesses, $guess);
+        $this->guesses[] = $guess;
         $this->setGuesses($this->guesses);
     }
 
