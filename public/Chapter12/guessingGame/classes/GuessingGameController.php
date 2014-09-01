@@ -32,6 +32,9 @@ class GuessingGameController {
 
     /**
      * the user makes a guess
+     * add the guess to the guesses array
+     * check to see if the guess is correct
+     * render victory or continue game with a hing
      */
     public function makeGuess()
     {

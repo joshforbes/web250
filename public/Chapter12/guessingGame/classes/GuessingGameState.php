@@ -98,6 +98,10 @@ class GuessingGameState {
     {
         $_SESSION = array();
         session_destroy();
+
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', strtotime('-1 year'), $params['path'], $params['domain'],
+            $params['secure'], isset($params['httponly']));
     }
 
 
