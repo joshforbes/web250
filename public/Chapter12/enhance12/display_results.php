@@ -72,6 +72,8 @@
 
         <label>Future Value:</label>
         <span><?php echo $future_value_f; ?></span><br />
+
+        <p><a href="index.php">Return to Calculator</a></p>
     </div>
 </body>
 </html>
