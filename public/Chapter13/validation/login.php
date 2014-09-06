@@ -1,7 +1,7 @@
 <?php
 
 //BOOTSTRAPPING - Would need to setup namespacing on a bigger project
-if ($_SERVER['APP_ENV'] === 'local') {
+if (isset($_SERVER['APP_ENV']) && $_SERVER['APP_ENV'] === 'local') {
     @include '.env.local.php';
 }
 @include 'database/DatabaseConnection.php';
@@ -11,8 +11,7 @@ if ($_SERVER['APP_ENV'] === 'local') {
 @include 'controller/PagesController.php';
 @include 'model/User.php';
 
-$username = getenv('username');
-echo $username;
+echo $_ENV['username'];
 
 $connection = DatabaseConnection::getConnection($_ENV);
 $view = new View();
