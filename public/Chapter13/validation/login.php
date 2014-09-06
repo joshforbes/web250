@@ -12,6 +12,8 @@ if ($_SERVER['APP_ENV'] === 'local') {
 @include 'model/User.php';
 
 
+var_dump($_ENV);
+
 $connection = DatabaseConnection::getConnection($_ENV);
 $view = new View();
 $auth = new Auth($connection);
