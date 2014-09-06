@@ -11,8 +11,8 @@ if ($_SERVER['APP_ENV'] === 'local') {
 @include 'controller/PagesController.php';
 @include 'model/User.php';
 
-$host = getenv('host');
-echo $host;
+$username = getenv('username');
+echo $username;
 
 $connection = DatabaseConnection::getConnection($_ENV);
 $view = new View();
