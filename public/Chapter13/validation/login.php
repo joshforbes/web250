@@ -11,9 +11,7 @@ if (isset($_SERVER['APP_ENV']) && $_SERVER['APP_ENV'] === 'local') {
 @include 'controller/PagesController.php';
 @include 'model/User.php';
 
-echo $_ENV['username'];
-
-$connection = DatabaseConnection::getConnection($_ENV);
+$connection = DatabaseConnection::getConnection();
 $view = new View();
 $auth = new Auth($connection);
 $loginController = new LoginController($connection, $view);
