@@ -1,0 +1,73 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+h1 {
+    text-align: center;
+}
+
+.top-bar {
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 3em;
+}
+
+.top-bar a {
+    color: white;
+}
+
+.container {
+    margin-top: 3em;
+}
+
+.account-container {
+    position: absolute;
+    right: 1em;
+    top: .5em;
+}
+
+.account-container .btn {
+    padding: .25em 2em;
+    margin-left: .5em;
+}
+
+.image-container {
+    width: 100%;
+}
+
+.image-container .image {
+    background: url('http://lorempixel.com/600/600') no-repeat center center;
+    height: 300px;
+    display: inline-block;
+    width: 33%;
+}
+
+.profile-container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-container h3 {
+    display: inline;
+    margin-right: .5em;
+}
+
+.profile-container img {
+    display: block;
+    margin: 0 auto;
+}
+
+.profile-container .btn {
+    width: 10em;
+}
+
+.login-container {
+    width: 400px;
+    margin: 0 auto;
+}
