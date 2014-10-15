@@ -30,7 +30,7 @@ if ($product) {
         $delete_message = 'No products were deleted';
     }
 } else {
-    $delete_message = 'There is no product with the name' . $name;
+    $delete_message = 'There is no product with the name ' . $name;
 }
 
 /***************************************
