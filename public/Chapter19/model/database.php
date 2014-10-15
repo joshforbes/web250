@@ -2,12 +2,11 @@
 
 if (isset($_SERVER['APP_ENV']) && $_SERVER['APP_ENV'] === 'local') {
     putenv('host=localhost');
-    putenv('database=my_guitar_shop2');
     putenv('username=homestead');
     putenv('password=secret');
 }
 
-$dsn = 'mysql:host=' . getenv('host') . ';dbname=' . getenv('database');
+$dsn = 'mysql:host=' . getenv('host') . ';dbname=my_guitar_shop2';
 $username = getenv('username');
 $password = getenv('password');
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
