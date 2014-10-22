@@ -17,8 +17,9 @@ $action = strtolower($action);
 switch ($action) {
     case 'list_products':
         // get categories and products
-        $category_id = $_GET['category_id'];
-        if (empty($category_id)) {
+        if (isset($_GET['category_id'])) {
+            $category_id = $_GET['category_id'];
+        } else {
             $category_id = 1;
         }
         $current_category = get_category($category_id);
