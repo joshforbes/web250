@@ -7,7 +7,7 @@
     <?php else: ?>
         <?php foreach ($products as $product) : ?>
         <p>
-            <a href="?action=view_product&amp;product_id=<?php
+            <a href="index.php?action=view_product&amp;product_id=<?php
                       echo $product['productID']; ?>">
                 <?php echo $product['productName']; ?>
             </a>

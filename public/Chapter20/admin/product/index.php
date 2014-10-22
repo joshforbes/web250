@@ -98,5 +98,41 @@ switch ($action) {
             include('product_view.php');
         }
         break;
+    case 'list_categories':
+
+        $categories = get_categories();
+
+        // display product list
+        include('category_list.php');
+        break;
+    case 'add_category':
+        $category_name = $_POST['name'];
+
+        // Validate inputs
+        if (empty($category_name)) {
+            $error = 'Invalid product data.
+                      Check all fields and try again.';
+            include('../../errors/error.php');
+        } else {
+            $category_id = add_category($category_name);
+            $categories = get_categories();
+            include('category_list.php');
+        }
+        break;
+    case 'delete_category':
+        $category_id = $_POST['category_id'];
+        if (count_products($category_id)) {
+            $error = "This category can't be deleted because it contains products";
+            include ('../../errors/error.php');
+        } else
+        {
+            delete_category($category_id);
+            header("Location: .?action=list_categories");
+        }
+
+
+        // Display the Product List page for the current category
+        //header("Location: .?category_id=$category_id");
+        break;
 }
 ?>

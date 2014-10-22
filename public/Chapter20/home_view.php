@@ -31,7 +31,7 @@
             </td>
             <td>
                 <p>
-                    <a href="catalog?action=view_product&amp;product_id=<?php 
+                    <a href="catalog/index.php?action=view_product&amp;product_id=<?php
                               echo $product['productID']; ?>">
                         <?php echo $product['productName']; ?>
                     </a>

@@ -40,7 +40,7 @@
         <?php echo '$' . $unit_price; ?>
         (You save
         <?php echo '$' . $discount_amount; ?>)</p>
-    <form action="<?php echo $app_path . 'cart' ?>" method="post">
+    <form action="<?php echo $app_path . 'cart/index.php' ?>" method="post">
         <input type="hidden" name="action" value="add" />
         <input type="hidden" name="product_id"
                value="<?php echo $product_id; ?>" />

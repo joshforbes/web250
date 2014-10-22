@@ -20,7 +20,7 @@
 
     <h2>Links</h2>
     <p><a href="index.php?action=show_add_edit_form">Add Product</a></p>
-    <p><a href="index.php?action=list_categories">Add Product</a></p>
+    <p><a href="index.php?action=list_categories">List Categories</a></p>
 
 </div>
 <?php include '../../view/footer.php'; ?>
