@@ -46,10 +46,10 @@ switch ($action) {
     case 'show_add_edit_form':
         if (isset($_GET['product_id'])) {
             $product_id = $_GET['product_id'];
-        } else {
+        } elseif (isset($_POST['product_id'])) {
             $product_id = $_POST['product_id'];
         }
-        $product = get_product($product_id);
+        if (isset($product_id)) $product = get_product($product_id);
         $categories = get_categories();
         include('product_add_edit.php');
         break;
