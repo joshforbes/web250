@@ -130,9 +130,6 @@ switch ($action) {
             header("Location: .?action=list_categories");
         }
 
-
-        // Display the Product List page for the current category
-        //header("Location: .?category_id=$category_id");
         break;
 }
 ?>
