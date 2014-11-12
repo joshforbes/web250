@@ -2,6 +2,7 @@
 require('../model/database.php');
 require('../model/product_db.php');
 require('../model/category_db.php');
+require('../helpers/validation_functions.php');
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -13,9 +14,10 @@ if (isset($_POST['action'])) {
 
 if ($action == 'list_products') {
     // Get the current category ID
-    $category_id = $_GET['category_id'];
-    if (!isset($category_id)) {
+    if (empty($_GET['category_id'])) {
         $category_id = 1;
+    } else {
+        $category_id = $_GET['category_id'];
     }
 
     // Get product and category data
@@ -45,10 +47,21 @@ if ($action == 'list_products') {
     $price = $_POST['price'];
 
     // Validate the inputs
-    if (empty($code) || empty($name) || empty($price)) {
+    // I think it would be way better if this code was structure to have a "product" model
+    // and then we could save the validation rules there. This seems a very "spaghetti"
+    // way to handle the problem. But given the code structure I think it is the
+    // best course of action.
+
+    if (!has_presence($code) || !has_presence($name) || !has_presence($price)) {
         $error = "Invalid product data. Check all fields and try again.";
         include('../errors/error.php');
-    } else {
+    } elseif (!has_length($code, ['min' => 2])) {
+        $error = "Product code must be at least two characters long.";
+        include('../errors/error.php');
+    } elseif (!has_number($price) || !has_format_matching($price, '/^[0-9]+(\.[0-9]{2})$/')) {
+        $error = "Incorrectly formatted price. Must be a number and include two decimal places";
+        include('../errors/error.php');
+    }else {
         add_product($category_id, $code, $name, $price);
 
         // Display the Product List page for the current category

@@ -12,9 +12,10 @@ if (isset($_POST['action'])) {
 }
 
 if ($action == 'list_products') {
-    $category_id = $_GET['category_id'];
-    if (empty($category_id)) {
+    if (empty($_GET['category_id'])) {
         $category_id = 1;
+    } else {
+        $category_id = $_GET['category_id'];
     }
 
     $categories = get_categories();
