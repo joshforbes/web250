@@ -10,7 +10,7 @@ var uploadModule = (function() {
                     self = this;
                     s.imageContainer.prepend(s.imageTemplate);
                     alert(file.name);
-                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/" + file.name + "')");
+                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/reagan5.jpg')");
 
                     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
                         window.setTimeout(function() { dropzoneSlideToggle(); }, 1000);
