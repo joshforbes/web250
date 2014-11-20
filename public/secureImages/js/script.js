@@ -4,7 +4,7 @@ var uploadModule = (function() {
     function initDropzone() {
         Dropzone.options.myDropzone = {
             maxFilesize: '2',
-            acceptedFiles: "image/*",
+            //acceptedFiles: "image/*",
             init: function() {
                 this.on("success", function(file, response) {
                     self = this;
@@ -19,7 +19,6 @@ var uploadModule = (function() {
                     }
 
                     $(document).trigger('imageUploaded');
-
                 });
             }
         }
