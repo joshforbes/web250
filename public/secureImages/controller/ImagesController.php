@@ -27,8 +27,12 @@ class ImagesController {
         $storage = new \Upload\Storage\FileSystem('uploads');
         $file = new \Upload\File('file', $storage);
 
+        $new_filename = uniqid();
+        $file->setName($new_filename);
+        $fileName = strtolower($file->getNameWithExtension());
+
         $data = [
-            'path' => 'uploads/' . strtolower($file->getNameWithExtension())
+            'path' => 'uploads/' . $fileName
         ];
 
         $file->addValidations(array(
@@ -44,7 +48,7 @@ class ImagesController {
             $image = new Image($this->connection, $data);
             $image->insert();
             header('Content-type: application/json');
-            exit(json_encode(array('id' => $image->id)));
+            exit(json_encode(array('id' => $image->id, 'fileName' => $file->getNameWithExtension())));
         } catch (\Exception $e) {
             header('HTTP/1.1 500 Internal Server Error');
             header('Content-type: text/plain');

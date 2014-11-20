@@ -9,7 +9,7 @@ var uploadModule = (function() {
                 this.on("success", function(file, response) {
                     self = this;
                     s.imageContainer.prepend(s.imageTemplate);
-                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/" + file.name + "')");
+                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/" + response.fileName + "')");
 
                     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
                         window.setTimeout(function() { dropzoneSlideToggle(); }, 1000);
