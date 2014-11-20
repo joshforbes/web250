@@ -4,14 +4,16 @@ var uploadModule = (function() {
     function initDropzone() {
         Dropzone.options.myDropzone = {
             maxFilesize: '2',
-            //acceptedFiles: "image/*",
+            acceptedFiles: "image/*",
+            fileName: null,
             init: function() {
+                this.on("addedfile", function(file) {
+                    this.fileName = file.name.toLowerCase();
+                });
                 this.on("success", function(file, response) {
                     self = this;
                     s.imageContainer.prepend(s.imageTemplate);
-                    var fileName = file.name.toLocaleLowerCase();
-                    alert(fileName);
-                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/" + fileName + "')");
+                    $('.image:first').attr('data-id', response.id).css("background-image", "url('uploads/" + this.fileName + "')");
 
                     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
                         window.setTimeout(function() { dropzoneSlideToggle(); }, 1000);
